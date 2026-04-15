@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Inicio - Latidos & Huellas</title>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<header>
+    <h1>🏠 Inicio</h1>
+</header>
+
+<nav>
+    <button onclick="irPagina('inicio.html')">🏠 Inicio</button>
+    <button onclick="irPagina('nosotros.html')">🐾 Nosotros</button>
+    <button onclick="irPagina('servicios.html')">🩺 Servicios</button>
+    <button onclick="irPagina('productos.html')">🛍️ Productos</button>
+</nav>
+
+<div class="contenedor">
+
+    <div class="articulos">
+        <div class="articulo">
+            <div>
+                <h3>Cuidados para tu mascota</h3>
+                <p>
+                    ✔ Vacunación completa<br>
+                    ✔ Desparasitación<br>
+                    ✔ Paseos diarios<br>
+                    ✔ Alimentación balanceada<br>
+                    ✔ Atención de emergencias
+                </p>
+            </div>
+
+            <img src="https://placedog.net/300" alt="Mascota">
+        </div>
+    </div>
+
+    <div class="formulario">
+        <h3>📅 Solicitar cita</h3>
+
+        <form id="formCita">
+            <input type="text" name="mascota" placeholder="Nombre de la mascota" required>
+
+            <select name="servicio" required>
+                <option value="" disabled selected>Tipo de servicio</option>
+                <option>Consulta general</option>
+                <option>Vacunación</option>
+                <option>Baño y estética</option>
+                <option>Cirugía</option>
+                <option>Emergencia</option>
+            </select>
+
+            <input type="date" name="fecha" required>
+            <input type="time" name="hora" required>
+
+            <input type="text" name="propietario" placeholder="Nombre del propietario" required>
+            <input type="tel" name="telefono" placeholder="Teléfono de contacto">
+
+            <button type="submit">✅ Guardar cita</button>
+        </form>
+    </div>
+
+</div>
+
+<!-- JS IMPORTANTE -->
+<script>
+function irPagina(url) {
+    window.location.href = url;
+}
+</script>
+
+</body>
+</html>

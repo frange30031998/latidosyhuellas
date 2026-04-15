@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productos · Latidos & Huellas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="logo-anillo"><img src="img/logo.png" alt="Logo" onerror="this.style.display='none';this.parentNode.innerHTML='🐾'"></div>
+  <div class="header-badge">Tienda Online · Latidos & Huellas</div>
+  <h1>🐶🐱 Productos para perros y gatos</h1>
+  <p class="descripcion">Agrega al carrito y haz tu pedido por WhatsApp. ¡Entregamos a domicilio!</p>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="index.html">🏠 Inicio</a>
+      <a href="nosotros.html">🐾 Nosotros</a>
+      <a href="servicios.html">🩺 Servicios</a>
+      <a href="productos.html" class="activo">🛍️ Productos</a>
+      <a href="pqrs.html">📋 PQRS</a>
+    </div>
+    <!-- BOTÓN CARRITO -->
+    <button class="btn-carrito-nav" onclick="abrirCarrito()">
+      🛒 Mi carrito
+      <span class="carrito-cantidad" id="contadorNav">0</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ═══ PRODUCTOS ═══ -->
+<div class="seccion">
+  <div class="sec-etiqueta">Tienda online</div>
+  <h2 class="sec-titulo">Productos para perros y gatos 🐶🐱</h2>
+  <p class="sec-subtitulo">
+    Haz clic en <strong>"Agregar al carrito"</strong> y cuando termines,
+    envía tu pedido por WhatsApp. Te contactamos para coordinar el pago y la entrega.
+  </p>
+
+  <!-- CATEGORÍAS -->
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px;" id="filtros">
+    <button class="tipo-btn activo" onclick="filtrar('todos', this)">Todos</button>
+    <button class="tipo-btn" onclick="filtrar('perro', this)">🐶 Para perro</button>
+    <button class="tipo-btn" onclick="filtrar('gato', this)">🐱 Para gato</button>
+    <button class="tipo-btn" onclick="filtrar('ambos', this)">🐾 Para ambos</button>
+  </div>
+
+  <!-- GRID DE PRODUCTOS -->
+  <div class="grid-cards" id="gridProductos">
+
+    <!-- ── PERRO ── -->
+    <div class="producto-card" data-categoria="perro" data-id="p1" data-nombre="Croquetas Premium Perro 2kg" data-precio="38000" data-emoji="🦴">
+    <div class="prod-imagen">
+  <img src="img/comidaperro.png" alt="Comida para perro">
+</div>
+      <h3>Croquetas Premium Perro</h3>
+      <p>Alimento balanceado para perros adultos. Bolsa x 2kg. Rico en proteínas y vitaminas.</p>
+      <div class="prod-precio">$38.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="perro" data-id="p2" data-nombre="Shampoo Medicado para Perro" data-precio="25000" data-emoji="🧴">
+     <div class="prod-imagen">
+  <img src="img/champoperro.png" alt="Champú para perro">
+</div>
+      <h3>Shampoo Medicado Perro</h3>
+      <p>Shampoo dermatológico para piel sensible. Alivia la picazón y el mal olor. 300ml.</p>
+      <div class="prod-precio">$25.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="perro" data-id="p3" data-nombre="Juguete mordedor para Perro" data-precio="15000" data-emoji="🎾">
+      <div class="prod-imagen">
+  <img src="img/jugueteperro.png" alt="Juguete para perro">
+</div>
+      <h3>Juguete mordedor Perro</h3>
+      <p>Juguete resistente de caucho natural. Limpia los dientes mientras juega. Varios tamaños.</p>
+      <div class="prod-precio">$15.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="perro" data-id="p4" data-nombre="Correa para Perro" data-precio="20000" data-emoji="🐶">
+      <div class="prod-imagen">
+  <img src="img/collarperro.png" alt="Collar antiparasitario para perro">
+</div>
+      <h3>Correa para Perro</h3>
+      <p>Correa resistente de nylon con agarre cómodo. Tallas S / M / L. Varios colores.</p>
+      <div class="prod-precio">$20.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <!-- ── GATO ── -->
+    <div class="producto-card" data-categoria="gato" data-id="p5" data-nombre="Croquetas Premium Gato 1.5kg" data-precio="32000" data-emoji="🐟">
+      <div class="prod-imagen">
+  <img src="img/comidagato.png" alt="Croquetas para gato">
+</div>
+      <h3>Croquetas Premium Gato</h3>
+      <p>Alimento especial para gato</p>
+      <div class="prod-precio">$32.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="gato" data-id="p6" data-nombre="Arena para Gato 4kg" data-precio="22000" data-emoji="🐱">
+      <div class="prod-imagen">
+  <img src="img/arenagato.png" alt="Croquetas para gato">
+</div>
+      <h3>Arena para Gato</h3>
+      <p>Arena aglomerante con control de olores. Bolsa x 4kg. Fácil de limpiar.</p>
+      <div class="prod-precio">$22.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="gato" data-id="p7" data-nombre="Juguete ratón para Gato" data-precio="12000" data-emoji="🐭">
+    <div class="prod-imagen">
+  <img src="img/juguetegato.png" alt="Juguete ratón para gato">
+</div>
+      <h3>Juguete ratón para Gato</h3>
+      <p>Set x 3 ratones de peluche con sonido. Estimula el instinto natural del gato.</p>
+      <div class="prod-precio">$12.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="gato" data-id="p8" data-nombre="Shampoo para Gato" data-precio="22000" data-emoji="✨">
+     <div class="prod-imagen">
+  <img src="img/champugato.png" alt="Champú para gato">
+</div>
+      <h3>Shampoo para Gato</h3>
+      <p>Fórmula suave especial felina. Deja el pelo brillante y sedoso. Frasco x 250ml.</p>
+      <div class="prod-precio">$22.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <!-- ── PARA AMBOS ── -->
+    <div class="producto-card" data-categoria="ambos" data-id="p9" data-nombre="Antiparasitario pipeta" data-precio="18000" data-emoji="💊">
+      <div class="prod-imagen">
+  <img src="img/pipetagato.png" alt="Pipeta antiparasitaria para gato">
+</div>
+      <h3>Antiparasitario pipeta</h3>
+      <p>Protección contra pulgas y garrapatas por 3 meses. Disponible para perro y gato.</p>
+      <div class="prod-precio">$18.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="ambos" data-id="p10" data-nombre="Collar antiparasitario" data-precio="22000" data-emoji="🎀">
+      <div class="prod-imagen">
+  <img src="img/antiparasitariogato.png" alt="Collar antiparasitario para gato">
+</div>
+      <h3>Collar antiparasitario</h3>
+      <p>Repelente de pulgas y garrapatas por 8 meses. Tallas S / M / L. Perros y gatos.</p>
+      <div class="prod-precio">$22.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="ambos" data-id="p11" data-nombre="Vitaminas para perro y gato" data-precio="28000" data-emoji="⭐">
+      <div class="prod-imagen">
+  <img src="img/vitaminaperroygato.png" alt="Vitaminas para gato">
+</div>
+      <h3>Vitaminas perro y gato</h3>
+      <p>Suplemento multivitamínico en pastillas. Mejora pelo, huesos y articulaciones. x60 uds.</p>
+      <div class="prod-precio">$28.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+    <div class="producto-card" data-categoria="ambos" data-id="p12" data-nombre="Cama para perro y gato" data-precio="55000" data-emoji="🛏️">
+     <div class="prod-imagen">
+  <img src="img/camagatop.png" alt="Cama para gato">
+</div>
+      <h3>Cama suave lavable</h3>
+      <p>Cama acolchada y lavable en lavadora. Tallas S / M / L. Ideal para perros y gatos.</p>
+      <div class="prod-precio">$55.000</div>
+      <button class="btn-agregar" onclick="agregarCarrito(this)">🛒 Agregar al carrito</button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     PANEL CARRITO (lateral)
+═══════════════════════════════════════ -->
+<div class="overlay" id="overlayCarrito">
+  <div class="panel-carrito">
+
+    <h2>
+      🛒 Mi Carrito
+      <button class="btn-cerrar" onclick="cerrarCarrito()">✕</button>
+    </h2>
+
+    <!-- Lista de items -->
+    <div class="items-carrito" id="listaCarrito">
+      <!-- Se llena con JS -->
+    </div>
+
+    <!-- Total y botón pedir -->
+    <div class="total-box" id="totalBox" style="display:none">
+      <div class="linea">
+        <span>Subtotal</span>
+        <span id="subtotalTexto">$0</span>
+      </div>
+      <div class="linea">
+        <span>Domicilio</span>
+        <span style="color:var(--rosa)">A convenir</span>
+      </div>
+      <div class="linea total-final">
+        <span>Total productos</span>
+        <span id="totalTexto">$0</span>
+      </div>
+
+      <button class="btn-wa btn-verde" onclick="pedirPorWhatsApp()" style="margin-top:18px;width:100%">
+        💬 Hacer pedido por WhatsApp
+      </button>
+      <p style="font-size:.76rem;color:var(--texto-gris);text-align:center;margin-top:10px">
+        Te contactaremos para coordinar pago y entrega a domicilio.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div class="toast" id="toast">✅ Producto agregado al carrito</div>
+
+<!-- ═══ FLOAT + FOOTER ═══ -->
+<a href="https://wa.me/573206659609" target="_blank" class="wa-float">💬</a>
+
+<footer>
+  <p>© 2026 <strong>Latidos &amp; Huellas</strong> · Todos los derechos reservados</p>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT - CARRITO
+═══════════════════════════════════════ -->
+<script>
+
+  // ── Estado del carrito ──
+  // carrito = array de objetos: { id, nombre, precio, emoji, cantidad }
+  let carrito = [];
+
+  // ─────────────────────────────────────
+  // AGREGAR AL CARRITO
+  // ─────────────────────────────────────
+  function agregarCarrito(boton) {
+    // Obtenemos datos del producto desde el elemento padre .producto-card
+    const tarjeta = boton.closest('.producto-card');
+    const id      = tarjeta.dataset.id;
+    const nombre  = tarjeta.dataset.nombre;
+    const precio  = parseInt(tarjeta.dataset.precio);
+    const emoji   = tarjeta.dataset.emoji;
+
+    // ¿Ya está en el carrito?
+    const existente = carrito.find(item => item.id === id);
+
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      carrito.push({ id, nombre, precio, emoji, cantidad: 1 });
+    }
+
+    // Feedback visual en el botón
+    boton.textContent = '✅ Agregado';
+    boton.classList.add('agregado');
+    setTimeout(() => {
+      boton.textContent = '🛒 Agregar al carrito';
+      boton.classList.remove('agregado');
+    }, 1800);
+
+    actualizarCarritoUI();
+    mostrarToast('✅ ' + nombre + ' agregado');
+  }
+
+  // ─────────────────────────────────────
+  // CAMBIAR CANTIDAD
+  // ─────────────────────────────────────
+  function cambiarCantidad(id, delta) {
+    const item = carrito.find(i => i.id === id);
+    if (!item) return;
+
+    item.cantidad += delta;
+
+    if (item.cantidad <= 0) {
+      // Eliminar del carrito
+      carrito = carrito.filter(i => i.id !== id);
+    }
+
+    actualizarCarritoUI();
+  }
+
+  // ─────────────────────────────────────
+  // ACTUALIZAR INTERFAZ DEL CARRITO
+  // ─────────────────────────────────────
+  function actualizarCarritoUI() {
+    const lista    = document.getElementById('listaCarrito');
+    const totalBox = document.getElementById('totalBox');
+    const contador = document.getElementById('contadorNav');
+
+    // Cantidad total de items
+    const totalItems = carrito.reduce((sum, i) => sum + i.cantidad, 0);
+    contador.textContent = totalItems;
+
+    if (carrito.length === 0) {
+      lista.innerHTML = `
+        <div class="carrito-vacio">
+          <span class="emoji">🛒</span>
+          Tu carrito está vacío.<br>
+          ¡Agrega productos desde la tienda!
+        </div>`;
+      totalBox.style.display = 'none';
+      return;
+    }
+
+    // Construir HTML de cada item
+    let html = '';
+    carrito.forEach(item => {
+      html += `
+        <div class="item-carrito">
+          <span class="item-icono">${item.emoji}</span>
+          <div class="item-info">
+            <div class="nombre">${item.nombre}</div>
+            <div class="precio">$${item.precio.toLocaleString('es-CO')} c/u</div>
+          </div>
+          <div class="item-controles">
+            <button onclick="cambiarCantidad('${item.id}', -1)">−</button>
+            <span class="cant">${item.cantidad}</span>
+            <button onclick="cambiarCantidad('${item.id}', +1)">+</button>
+          </div>
+        </div>`;
+    });
+
+    lista.innerHTML = html;
+
+    // Calcular total
+    const total = carrito.reduce((sum, i) => sum + i.precio * i.cantidad, 0);
+    document.getElementById('subtotalTexto').textContent = '$' + total.toLocaleString('es-CO');
+    document.getElementById('totalTexto').textContent    = '$' + total.toLocaleString('es-CO');
+    totalBox.style.display = 'block';
+  }
+
+  // ─────────────────────────────────────
+  // ABRIR / CERRAR CARRITO
+  // ─────────────────────────────────────
+  function abrirCarrito() {
+    actualizarCarritoUI();
+    document.getElementById('overlayCarrito').classList.add('abierto');
+  }
+
+  function cerrarCarrito() {
+    document.getElementById('overlayCarrito').classList.remove('abierto');
+  }
+
+  // Cerrar al hacer clic en el fondo
+  document.getElementById('overlayCarrito').addEventListener('click', function(e) {
+    if (e.target === this) cerrarCarrito();
+  });
+
+  // ─────────────────────────────────────
+  // HACER PEDIDO POR WHATSAPP
+  // ─────────────────────────────────────
+  function pedirPorWhatsApp() {
+    if (carrito.length === 0) return;
+
+    let lineas = carrito.map(i =>
+      `• ${i.emoji} ${i.nombre} x${i.cantidad} = $${(i.precio * i.cantidad).toLocaleString('es-CO')}`
+    ).join('\n');
+
+    const total = carrito.reduce((sum, i) => sum + i.precio * i.cantidad, 0);
+
+    const msg = `Hola! Quiero hacer un pedido de la tienda 🛍️
+
+🛒 *MI PEDIDO*
+${lineas}
+
+💰 *Total productos: $${total.toLocaleString('es-CO')} COP*
+
+Por favor indíquenme cómo pagar y coordinar la entrega. ¡Gracias!`;
+
+    const url = 'https://wa.me/573206659609?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+    cerrarCarrito();
+  }
+
+  // ─────────────────────────────────────
+  // FILTRAR PRODUCTOS POR CATEGORÍA
+  // ─────────────────────────────────────
+  function filtrar(categoria, botonActivo) {
+    document.querySelectorAll('#filtros .tipo-btn').forEach(b => b.classList.remove('activo'));
+    botonActivo.classList.add('activo');
+
+    document.querySelectorAll('.producto-card').forEach(card => {
+      const cat = card.dataset.categoria;
+      if (categoria === 'todos' || cat === categoria || cat === 'ambos') {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // ─────────────────────────────────────
+  // TOAST DE NOTIFICACIÓN
+  // ─────────────────────────────────────
+  function mostrarToast(mensaje) {
+    const toast = document.getElementById('toast');
+    toast.textContent = mensaje;
+    toast.classList.add('visible');
+    setTimeout(() => toast.classList.remove('visible'), 2500);
+  }
+
+</script>
+
+</body>
+</html>

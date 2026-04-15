@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PQRS · Latidos & Huellas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+ <div class="logo-anillo">
+  <img src="img/logo.png" alt="Logo">
+</div>
+<div class="header-badge">📋 Centro Veterinario · Valledupar</div>
+  
+ </header>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="index.html">🏠 Inicio</a>
+      <a href="nosotros.html">🐾 Nosotros</a>
+      <a href="servicios.html">🩺 Servicios</a>
+      <a href="productos.html">🛍️ Productos</a>
+      <a href="pqrs.html" class="activo">📋 PQRS</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ FORMULARIO PQRS ═══ -->
+<div class="seccion">
+  <div class="sec-etiqueta">Contáctanos</div>
+  <h2 class="sec-titulo">¿Cómo podemos mejorar?</h2>
+  <p class="sec-subtitulo">
+    Completa el formulario y envíanos tu mensaje directamente por WhatsApp.
+    Te responderemos lo más pronto posible.
+  </p>
+
+  <div class="pqrs-box">
+    <h3 style="font-size:1.15rem;font-weight:800;margin-bottom:6px">Enviar solicitud 📨</h3>
+    <p style="font-size:.87rem;color:var(--texto-gris);margin-bottom:22px;line-height:1.65">
+      Selecciona el tipo de solicitud y cuéntanos lo que necesitas.
+    </p>
+
+    <!-- TIPO DE SOLICITUD -->
+    <p style="font-size:.78rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--texto-gris);margin-bottom:10px">
+      Tipo de solicitud
+    </p>
+    <div class="tipo-pqrs" id="tipoPqrs">
+      <button class="tipo-btn activo" onclick="seleccionarTipo(this)">📩 Petición</button>
+      <button class="tipo-btn" onclick="seleccionarTipo(this)">😟 Queja</button>
+      <button class="tipo-btn" onclick="seleccionarTipo(this)">⚠️ Reclamo</button>
+      <button class="tipo-btn" onclick="seleccionarTipo(this)">💡 Sugerencia</button>
+      <button class="tipo-btn" onclick="seleccionarTipo(this)">😊 Felicitación</button>
+    </div>
+
+    <!-- DATOS PERSONALES -->
+    <div class="form-fila">
+      <div class="form-grupo">
+        <label>👤 Tu nombre</label>
+        <input type="text" id="pqrsNombre" placeholder="Nombre completo">
+      </div>
+      <div class="form-grupo">
+        <label>📞 Tu WhatsApp</label>
+        <input type="tel" id="pqrsTelefono" placeholder="320 665 9609">
+      </div>
+    </div>
+
+    <div class="form-grupo">
+      <label>📧 Correo electrónico (opcional)</label>
+      <input type="email" id="pqrsEmail" placeholder="correo@ejemplo.com">
+    </div>
+
+    <div class="form-grupo">
+      <label>📝 Tu mensaje</label>
+      <textarea id="pqrsMensaje" placeholder="Escribe aquí tu petición, queja, reclamo o sugerencia con todos los detalles..."></textarea>
+    </div>
+
+    <!-- BOTÓN ENVIAR -->
+    <button class="btn-wa" onclick="enviarPQRS()" style="margin-top:8px">
+      💬 Enviar por WhatsApp
+    </button>
+
+    <p style="text-align:center;font-size:.76rem;color:var(--texto-gris);margin-top:12px">
+      Al hacer clic se abrirá WhatsApp con tu solicitud lista para enviar.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ FLOAT + FOOTER ═══ -->
+<a href="https://wa.me/573206659609" target="_blank" class="wa-float">💬</a>
+
+<footer>
+  <p>© 2026 <strong>Latidos &amp; Huellas</strong> · Todos los derechos reservados</p>
+</footer>
+
+<script>
+
+  // ── Seleccionar tipo de solicitud ──
+  function seleccionarTipo(boton) {
+    document.querySelectorAll('#tipoPqrs .tipo-btn').forEach(b => b.classList.remove('activo'));
+    boton.classList.add('activo');
+  }
+
+  // ── Enviar PQRS por WhatsApp ──
+  function enviarPQRS() {
+    const tipo     = document.querySelector('#tipoPqrs .activo').textContent.trim();
+    const nombre   = document.getElementById('pqrsNombre').value.trim();
+    const telefono = document.getElementById('pqrsTelefono').value.trim();
+    const email    = document.getElementById('pqrsEmail').value.trim();
+    const mensaje  = document.getElementById('pqrsMensaje').value.trim();
+
+    if (!nombre || !mensaje) {
+      alert('Por favor escribe tu nombre y el mensaje.');
+      return;
+    }
+
+    const msg = `Hola! Tengo una solicitud PQRS 📋
+
+📌 *TIPO:* ${tipo}
+
+👤 *MIS DATOS*
+• Nombre:    ${nombre}
+• Teléfono:  ${telefono || 'No indicado'}
+• Email:     ${email    || 'No indicado'}
+
+📝 *MI MENSAJE*
+${mensaje}
+
+Quedo en espera de su respuesta. ¡Gracias!`;
+
+    const url = 'https://wa.me/573206659609?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+  }
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Servicios · Latidos & Huellas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="logo-anillo"><img src="img/logo.png" alt="Logo" onerror="this.style.display='none';this.parentNode.innerHTML='🐾'"></div>
+  <div class="header-badge">🐶🐱 Centro Veterinario · Valledupar</div>
+
+  <p class="descripcion">Atención especializada para perros y gatos. Reserva tu cita por WhatsApp al instante.</p>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="index.html">🏠 Inicio</a>
+      <a href="nosotros.html">🐾 Nosotros</a>
+      <a href="servicios.html" class="activo">🩺 Servicios</a>
+      <a href="productos.html">🛍️ Productos</a>
+      <a href="pqrs.html">📋 PQRS</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══ SERVICIOS ═══ -->
+<div class="seccion">
+  <div class="sec-etiqueta">Lo que ofrecemos</div>
+  <h2 class="sec-titulo">¿Qué servicio necesita tu mascota?</h2>
+  <p class="sec-subtitulo">
+    Haz clic en <strong>"Reservar cita"</strong> en el servicio que necesites,
+    completa el formulario y te confirmaremos por WhatsApp.
+  </p>
+
+  <div class="grid-cards">
+
+    <div class="card">
+      <div class="card-icono">🩺</div>
+      <h3>Consulta General</h3>
+      <p>Revisión completa del estado de salud de tu mascota con diagnóstico detallado y recomendaciones.</p>
+      <div class="precio-tag">$25.000 <span>COP</span></div>
+      <button class="btn-wa" onclick="abrirModal('Consulta General', '$25.000')">
+        📅 Reservar cita
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-icono">💉</div>
+      <h3>Vacunación</h3>
+      <p>Protección completa con el esquema de vacunación recomendado para perros y gatos.</p>
+      <div class="precio-tag">$30.000 <span>COP</span></div>
+      <button class="btn-wa" onclick="abrirModal('Vacunación', '$30.000')">
+        📅 Reservar cita
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-icono">✂️</div>
+      <h3>Baño y Estética</h3>
+      <p>Baño profesional, corte de pelo, limpieza de oídos y arreglo de uñas con productos de calidad.</p>
+      <div class="precio-tag">$20.000 <span>COP</span></div>
+      <button class="btn-wa" onclick="abrirModal('Baño y Estética', '$20.000')">
+        📅 Reservar cita
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-icono">🔬</div>
+      <h3>Cirugía</h3>
+      <p>Procedimientos quirúrgicos con equipos modernos y personal altamente especializado.</p>
+      <div class="precio-tag">Consultar <span>precio</span></div>
+      <button class="btn-wa" onclick="abrirModal('Cirugía', 'A consultar')">
+        📅 Reservar cita
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-icono">🦷</div>
+      <h3>Odontología</h3>
+      <p>Limpieza dental, extracción y tratamientos para mantener la salud bucal de tu mascota.</p>
+      <div class="precio-tag">$35.000 <span>COP</span></div>
+      <button class="btn-wa" onclick="abrirModal('Odontología', '$35.000')">
+        📅 Reservar cita
+      </button>
+    </div>
+
+    <div class="card">
+      <div class="card-icono">🚨</div>
+      <h3>Emergencias 24/7</h3>
+      <p>Atención inmediata para urgencias. Disponible las 24 horas, los 7 días de la semana.</p>
+      <div class="precio-tag" style="color:var(--rosa)">Disponible <span>siempre</span></div>
+      <a href="https://wa.me/573206659609?text=🚨 EMERGENCIA: Necesito atención urgente para mi mascota ahora."
+         target="_blank" class="btn-emergencia">
+        🚨 Contactar ahora
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════
+     MODAL RESERVA DE CITA
+═══════════════════════════════════════ -->
+<div class="modal-overlay" id="modalCita">
+  <div class="modal">
+
+    <h2>
+      📅 Reservar Cita
+      <button class="btn-cerrar" onclick="cerrarModal()">✕</button>
+    </h2>
+    <p class="modal-sub">
+      Servicio: <strong id="nombreServicio">—</strong> &nbsp;·&nbsp;
+      Precio: <strong id="precioServicio">—</strong>
+    </p>
+
+    <!-- FORMULARIO -->
+    <div class="form-grupo">
+      <label>🐾 Nombre de la mascota</label>
+      <input type="text" id="nombreMascota" placeholder="Ej: Luna, Max, Coco...">
+    </div>
+
+    <div class="form-fila">
+      <div class="form-grupo">
+        <label>🐶 Especie</label>
+        <select id="especie">
+          <option value="">Seleccionar...</option>
+          <option>🐶 Perro</option>
+          <option>🐱 Gato</option>
+        </select>
+      </div>
+      <div class="form-grupo">
+        <label>🔢 Edad aprox.</label>
+        <input type="text" id="edadMascota" placeholder="Ej: 2 años">
+      </div>
+    </div>
+
+    <div class="form-fila">
+      <div class="form-grupo">
+        <label>📅 Fecha deseada</label>
+        <input type="date" id="fechaCita">
+      </div>
+      <div class="form-grupo">
+        <label>🕐 Hora deseada</label>
+        <input type="time" id="horaCita" min="08:00" max="17:00">
+      </div>
+    </div>
+
+    <div class="form-grupo">
+      <label>👤 Nombre del propietario</label>
+      <input type="text" id="nombrePropietario" placeholder="Tu nombre completo">
+    </div>
+
+    <div class="form-grupo">
+      <label>📞 Tu número de WhatsApp</label>
+      <input type="tel" id="telefonoPropietario" placeholder="Ej: 320 665 9609">
+    </div>
+
+    <div class="form-grupo">
+      <label>📝 Observaciones (opcional)</label>
+      <textarea id="observaciones" placeholder="Ej: La mascota tiene historial de alergias..."></textarea>
+    </div>
+
+    <!-- BOTÓN ENVIAR -->
+    <button class="btn-wa" onclick="enviarReserva()" style="margin-top:8px">
+      💬 Confirmar por WhatsApp
+    </button>
+
+    <p style="text-align:center;font-size:.78rem;color:var(--texto-gris);margin-top:12px">
+      Al hacer clic se abrirá WhatsApp con tu solicitud lista para enviar.
+    </p>
+
+  </div>
+</div>
+
+<!-- ═══ FLOAT + FOOTER ═══ -->
+<a href="https://wa.me/573206659609" target="_blank" class="wa-float">💬</a>
+
+<footer>
+  <p>© 2026 <strong>Latidos &amp; Huellas</strong> · Todos los derechos reservados</p>
+</footer>
+
+<!-- ═══════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════ -->
+<script>
+
+  // ── Abrir modal con el servicio seleccionado ──
+  function abrirModal(servicio, precio) {
+    document.getElementById('nombreServicio').textContent = servicio;
+    document.getElementById('precioServicio').textContent  = precio;
+    document.getElementById('modalCita').classList.add('abierto');
+    // Ponemos fecha mínima = hoy
+    document.getElementById('fechaCita').min = new Date().toISOString().split('T')[0];
+  }
+
+  // ── Cerrar modal ──
+  function cerrarModal() {
+    document.getElementById('modalCita').classList.remove('abierto');
+  }
+
+  // ── Cerrar al hacer clic fuera del modal ──
+  document.getElementById('modalCita').addEventListener('click', function(e) {
+    if (e.target === this) cerrarModal();
+  });
+
+  // ── Enviar reserva por WhatsApp ──
+  function enviarReserva() {
+    const servicio   = document.getElementById('nombreServicio').textContent;
+    const precio     = document.getElementById('precioServicio').textContent;
+    const mascota    = document.getElementById('nombreMascota').value.trim();
+    const especie    = document.getElementById('especie').value;
+    const edad       = document.getElementById('edadMascota').value.trim();
+    const fecha      = document.getElementById('fechaCita').value;
+    const hora       = document.getElementById('horaCita').value;
+    const propietario = document.getElementById('nombrePropietario').value.trim();
+    const telefono   = document.getElementById('telefonoPropietario').value.trim();
+    const obs        = document.getElementById('observaciones').value.trim();
+
+    // Validación básica
+    if (!mascota || !propietario || !fecha) {
+      alert('Por favor completa al menos: nombre de la mascota, tu nombre y la fecha.');
+      return;
+    }
+
+    // Construimos el mensaje
+    const msg = `Hola! Quiero reservar una cita 🐾
+
+📋 *DATOS DE LA CITA*
+• Servicio: ${servicio}
+• Precio:   ${precio}
+
+🐶 *MI MASCOTA*
+• Nombre:  ${mascota}
+• Especie: ${especie || 'No especificado'}
+• Edad:    ${edad    || 'No especificada'}
+
+📅 *FECHA Y HORA DESEADA*
+• Fecha: ${fecha}
+• Hora:  ${hora || 'A convenir'}
+
+👤 *MIS DATOS*
+• Nombre:    ${propietario}
+• Teléfono:  ${telefono || 'Mismo WhatsApp'}
+${obs ? `\n📝 Observaciones: ${obs}` : ''}
+
+¡Gracias!`;
+
+    // Abrimos WhatsApp
+    const url = 'https://wa.me/573206659609?text=' + encodeURIComponent(msg);
+    window.open(url, '_blank');
+    cerrarModal();
+  }
+
+</script>
+
+</body>
+</html>
